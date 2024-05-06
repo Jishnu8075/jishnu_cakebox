@@ -1,0 +1,36 @@
+{%extends 'cake/base.html'%}
+{%block body_block%}
+<div class="container">
+    {%csrf_token%}
+
+    <table class="table table-striped">
+
+        <tr>
+            <td>Name</td>
+            <td>Category</td>
+            <td>image</td>
+        </tr>
+
+        {%for ct in cakes%}
+        <tr>
+            <td>{{ct.name}}</td>
+            <td>{{ct.category}}</td>
+            <td>
+                <img src="{{ct.image.url}}" alt="" width="100px" height="200px" style="object-fit: contain;">
+            </td>
+
+            <td>
+                <a href="{%url 'cake-remove' ct.id%}">delete</a>
+                <a href="{%url 'cake-detail' ct.id%}">view</a>
+                <a href="{%url 'varient-add' ct.id%}">Add varient</a>
+            </td>
+        </tr>
+        {%endfor%}
+
+    </table>
+
+
+
+
+</div>
+{%endblock%}
